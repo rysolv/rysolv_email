@@ -1,0 +1,24 @@
+{
+	"name": "rysolv_email",
+	"version": "1.0.0",
+	"description": "transactional email api for rysolv.com",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "nodemon index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/rysolv/rysolv_email.git"
+	},
+	"author": "Tyler Maran (tyler.maran@gmail.com)",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/rysolv/rysolv_email/issues"
+	},
+	"homepage": "https://github.com/rysolv/rysolv_email#readme",
+	"dependencies": {
+		"express": "^4.17.1",
+		"postmark": "^2.5.5"
+	}
+}
