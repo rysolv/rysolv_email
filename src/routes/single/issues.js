@@ -1,13 +1,7 @@
-const express = require('express');
-const AttemptingController = require('../controllers/attempting');
-
-const router = express.Router();
-
 // POST ROUTES
-router.post('/issueClosed', AttemptingController.issueClosed);
-router.post('/issueResolved', AttemptingController.issueResolved);
-router.post('/newComment', AttemptingController.newComment);
-router.post('/newFunding', AttemptingController.newFunding);
-router.post('/newPullRequest', AttemptingController.newPullRequest);
-
-module.exports = router;
+// router.post('/newComment', AttemptingController.newComment);
+// router.post('/newPullRequest', AttemptingController.newPullRequest);
+// router.post('/attempting', AttemptingController.attempting);
+// router.post('/resolved', AttemptingController.resolved);
+// router.post('/closed', AttemptingController.closed);
+// router.post('/funded', AttemptingController.funded);
