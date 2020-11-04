@@ -35,6 +35,6 @@ exports.issueResolved = async (req, res, next) => {
       email: 'Email delivered',
     });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    next(error);
   }
 };

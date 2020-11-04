@@ -11,7 +11,7 @@ This API handles all outgoing emails from rysolv.com. It is primarily broken int
 
 ### Configuring the DB
 
-Create a `.env` with the following inputs (matching your local db). Will be used in `/db/connect.js`
+Create a `.env` with the following inputs (matching your local db). Will be used in `~/connect.js`
 
 - `DB_USER=user`
 - `DB_PASSWORD=password`
@@ -120,8 +120,8 @@ Body: {name, email, issue}
 ### Account Funded
 
 ```
-POST: localhost:3000/s/funding/accountFunded
-Body: {name, email, issue}
+POST: localhost:3000/s/funding/fundedAccount
+Body: { amount, userId }
 ```
 
 - Funding has been added to your account
@@ -129,7 +129,7 @@ Body: {name, email, issue}
 ### Issue Funded
 
 ```
-POST: localhost:3000/s/funding/issueFunded
+POST: localhost:3000/s/funding/fundedIssue
 Body: {name, email, issue}
 ```
 
@@ -155,12 +155,12 @@ Body: {name, email, issue}
 
 - Your pull request has been merged in
 
-## `/s/welcome`
+## `/s/auth`
 
-### Pull request submitted
+### Welcome email
 
 ```
-POST: localhost:3000/s/welcome
+POST: localhost:3000/s/auth/welcome
 Body: {userId}
 ```
 

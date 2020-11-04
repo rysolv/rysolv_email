@@ -1,6 +1,6 @@
-const text = ({ contribution, fundedAmount, issueUrl }) => {
+const text = ({ amount, fundedAmount, issueUrl }) => {
   return `
-    You contributed $${contribution} to an issue on Rysolv.
+    You contributed $${amount} to an issue on Rysolv.
 
     The total bounty on this issue is now $${fundedAmount}
 

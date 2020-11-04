@@ -36,13 +36,6 @@ app.use('/s/funding', singleFunding);
 // app.use('/s/issues', singleIssues);
 // app.use('/s/pullRequests', singlePullRequests);
 
-// Default
-app.use('/', (req, res, next) => {
-  res.status(200).json({
-    message: 'Rysolv email api',
-  });
-});
-
 app.use((req, res, next) => {
   const error = new Error('Not Found');
   error.status = 404;
@@ -51,10 +44,8 @@ app.use((req, res, next) => {
 
 // Throw errors from anywhere in the app
 app.use((error, req, res, next) => {
-  res.status(error.status || 500);
-  res.json({
+  res.status(error.status || 500).json({
     error: {
-      subject: 'General Error handling',
       message: error.message,
     },
   });

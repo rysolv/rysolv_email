@@ -1,6 +1,6 @@
-const text = ({ balance, fundedAmount }) => {
+const text = ({ amount, balance }) => {
   return `
-    Your account has been funded with $${fundedAmount}.
+    Your account has been funded with $${amount}.
 
     Your total account balance is ${balance}.
 
