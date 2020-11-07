@@ -29,9 +29,7 @@ exports.fundedIssue = async (req, res, next) => {
 };
 
 exports.fundedAccount = async (req, res, next) => {
-  console.log(req.body);
   const { amount, userId } = req.body;
-  console.log(amount, userId);
   const { subject, text } = fundedAccount;
 
   try {

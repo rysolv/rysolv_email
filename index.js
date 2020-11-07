@@ -16,7 +16,7 @@ const batchFunding = require('./src/routes/batch/funding');
 
 // Single emails
 const singleFunding = require('./src/routes/single/funding');
-// const welcome = require('./src/routes/single/welcome');
+const singleUser = require('./src/routes/single/users');
 // const singleAttempting = require('./src/routes/single/attempting');
 // const singleIssues = require('./src/routes/single/issues');
 // const singlePullRequests = require('./src/routes/single/pullRequests');
@@ -31,7 +31,7 @@ app.use('/b/funding', batchFunding);
 
 // Single routes
 app.use('/s/funding', singleFunding);
-// app.use('/s/welcome', welcome);
+app.use('/s/users', singleUser);
 // app.use('/s/attempting', singleAttempting);
 // app.use('/s/issues', singleIssues);
 // app.use('/s/pullRequests', singlePullRequests);
