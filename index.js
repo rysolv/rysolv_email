@@ -22,6 +22,9 @@ const singleUser = require('./src/routes/single/users');
 // const singlePullRequests = require('./src/routes/single/pullRequests');
 // const singleWatching = require('./src/routes/single/watching');
 
+// Ping
+app.get('/', (req, res, next) => res.status(200).send('pong'));
+
 // Batch routes
 app.use('/b/funding', batchFunding);
 // app.use('/b/attempting', batchAttempting);
