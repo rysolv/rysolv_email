@@ -1,6 +1,6 @@
 const { client } = require('../../connect');
-const { usersWhoFunded } = require('../../db');
 const { issueResolved } = require('../../templates/funding');
+const { usersWhoFunded } = require('../../db');
 
 // Notify users who funded an issue
 exports.issueResolved = async (req, res, next) => {
