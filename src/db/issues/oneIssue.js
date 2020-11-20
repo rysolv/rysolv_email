@@ -3,8 +3,9 @@ const { singleQuery } = require('../baseQueries');
 const oneIssue = async ({ issueId }) => {
   const queryText = `
     SELECT 
-			funded_amount AS "fundedAmount",
-			name
+      funded_amount AS "fundedAmount",
+      name,
+      repo AS "githubUrl"
     FROM issues
     WHERE issues.id = $1
   `;

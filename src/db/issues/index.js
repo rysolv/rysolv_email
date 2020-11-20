@@ -1,5 +1,3 @@
 const oneIssue = require('./oneIssue');
 
-module.exports = {
-  oneIssue,
-};
+module.exports = { oneIssue };
