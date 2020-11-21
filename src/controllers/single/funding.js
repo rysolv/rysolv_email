@@ -4,12 +4,13 @@ const { oneUser, oneIssue } = require('../../db');
 const { postFundingComment } = require('../../../github');
 
 exports.fundedIssue = async (req, res, next) => {
-  const { amount, issueId, userId } = req.body;
+  const { amount, email, issueId, userId } = req.body;
   const { subject, text } = fundedIssue;
 
   try {
-    const { email, username } = await oneUser({ userId });
+    const { username } = await oneUser({ userId }) || {};
     const { fundedAmount, githubUrl } = await oneIssue({ issueId });
+    const formattedUsername = userId ? `**${username}**` : 'An anonymous user';
     const issueUrl = `https://rysolv.com/issues/detail/${issueId}`;
     const textBody = text({ amount, fundedAmount, issueUrl });
 
@@ -21,7 +22,7 @@ exports.fundedIssue = async (req, res, next) => {
       MessageStream: 'outbound',
     });
 
-    await postFundingComment({ amount, fundedAmount, githubUrl, issueId, username });
+    await postFundingComment({ amount, fundedAmount, githubUrl, issueId, username: formattedUsername });
 
     res.status(200).json({
       email: 'Email delivered',
