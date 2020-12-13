@@ -1,5 +1,4 @@
-const text = ({ amount, fundedAmount, issueUrl }) => {
-  return `
+const text = ({ amount, fundedAmount, issueUrl }) => `
     You contributed $${amount} to an issue on Rysolv.
 
     The total bounty on this issue is now $${fundedAmount}
@@ -13,6 +12,5 @@ const text = ({ amount, fundedAmount, issueUrl }) => {
     The Rysolv Team
     https://rysolv.com
   `;
-};
 
 module.exports = text;
