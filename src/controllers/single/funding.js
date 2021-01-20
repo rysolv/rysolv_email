@@ -1,6 +1,38 @@
 const { client } = require('../../connect');
 const { oneUser, oneIssue } = require('../../db');
-const { fundedAccount, fundedIssue } = require('../../templates/funding');
+const {
+  earnedBounty,
+  fundedAccount,
+  fundedIssue,
+} = require('../../templates/funding');
+
+exports.earnedBounty = async (req, res, next) => {
+  const { userId, fundedAmount, rep } = req.body;
+  const { subject, text } = earnedBounty;
+
+  console.log(userId, fundedAmount, rep);
+
+  try {
+    const { email, username } = await oneUser({ userId });
+    const textBody = text({ fundedAmount, rep, username });
+
+    console.log(textBody);
+
+    await client.sendEmail({
+      From: process.env.SENDER,
+      To: email,
+      Subject: subject,
+      TextBody: textBody,
+      MessageStream: 'outbound',
+    });
+
+    res.status(200).json({
+      email: 'Email delivered',
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 exports.fundedIssue = async (req, res, next) => {
   const { amount, issueId, userId } = req.body;
