@@ -135,13 +135,22 @@ Body: {name, email, issue}
 
 - You funded an issue
 
+### Earned Bounty
+
+```
+POST: localhost:3000/s/funding/earnedBounty
+Body: {userId, fundedAmount, rep}
+```
+
+- You have earned the bounty on an issue
+
 ## `/s/pullRequests`
 
 ### Pull request submitted
 
 ```
 POST: localhost:3000/s/pullRequests/submitted
-Body: {name, email, issue}
+Body: { userId, pullrequestId }
 ```
 
 - You have submitted a pull request
