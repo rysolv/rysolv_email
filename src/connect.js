@@ -58,6 +58,4 @@ pool.on('remove', () => {
   console.log('Client connection ended');
 });
 
-module.exports = pool;
-
 module.exports = { emailClient, pool, sendEmail };

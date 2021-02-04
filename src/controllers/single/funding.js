@@ -1,7 +1,7 @@
-const { sendEmail } = require('../../connect');
 const { earnedBounty, fundedAccount, fundedIssue } = require('../../templates/funding');
 const { oneUser, oneIssue } = require('../../db');
 const { postFundingComment } = require('../../../github');
+const { sendEmail } = require('../../connect');
 
 exports.earnedBounty = async (req, res, next) => {
   const { fundedAmount, rep, userId } = req.body;
@@ -9,8 +9,8 @@ exports.earnedBounty = async (req, res, next) => {
 
   try {
     const { email, username } = await oneUser({ userId });
-    const textBody = text({ fundedAmount, rep, username });
     const customSubject = subject({ fundedAmount });
+    const textBody = text({ fundedAmount, rep, username });
 
     await sendEmail({
       email,
@@ -32,7 +32,7 @@ exports.fundedIssue = async (req, res, next) => {
   const { subject, text } = fundedIssue;
 
   try {
-    const { username } = (await oneUser({ userId })) || {};
+    const { username } = await oneUser({ userId }) || {};
     const { fundedAmount, githubUrl } = await oneIssue({ issueId });
     const formattedUsername = userId ? `**${username}**` : 'An anonymous user';
     const issueUrl = `https://rysolv.com/issues/detail/${issueId}`;
