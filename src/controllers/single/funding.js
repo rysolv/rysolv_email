@@ -1,9 +1,5 @@
-const { client } = require('../../connect');
-const {
-  earnedBounty,
-  fundedAccount,
-  fundedIssue,
-} = require('../../templates/funding');
+const { sendEmail } = require('../../connect');
+const { earnedBounty, fundedAccount, fundedIssue } = require('../../templates/funding');
 const { oneUser, oneIssue } = require('../../db');
 const { postFundingComment } = require('../../../github');
 
@@ -14,13 +10,13 @@ exports.earnedBounty = async (req, res, next) => {
   try {
     const { email, username } = await oneUser({ userId });
     const textBody = text({ fundedAmount, rep, username });
+    const customSubject = subject({ fundedAmount });
 
-    await client.sendEmail({
-      From: process.env.SENDER,
-      To: email,
-      Subject: subject,
-      TextBody: textBody,
-      MessageStream: 'outbound',
+    await sendEmail({
+      email,
+      notifyAdmin: true,
+      subject: customSubject,
+      textBody,
     });
 
     res.status(200).json({
@@ -36,21 +32,26 @@ exports.fundedIssue = async (req, res, next) => {
   const { subject, text } = fundedIssue;
 
   try {
-    const { username } = await oneUser({ userId }) || {};
+    const { username } = (await oneUser({ userId })) || {};
     const { fundedAmount, githubUrl } = await oneIssue({ issueId });
     const formattedUsername = userId ? `**${username}**` : 'An anonymous user';
     const issueUrl = `https://rysolv.com/issues/detail/${issueId}`;
     const textBody = text({ amount, fundedAmount, issueUrl });
 
-    await client.sendEmail({
-      From: process.env.SENDER,
-      To: email,
-      Subject: subject,
-      TextBody: textBody,
-      MessageStream: 'outbound',
+    await sendEmail({
+      email,
+      notifyAdmin: true,
+      subject,
+      textBody,
     });
 
-    await postFundingComment({ amount, fundedAmount, githubUrl, issueId, username: formattedUsername });
+    await postFundingComment({
+      amount,
+      fundedAmount,
+      githubUrl,
+      issueId,
+      username: formattedUsername,
+    });
 
     res.status(200).json({
       email: 'Email delivered',
@@ -68,12 +69,12 @@ exports.fundedAccount = async (req, res, next) => {
     const { balance, email } = await oneUser({ userId });
     const customSubject = subject({ amount });
     const textBody = text({ amount, balance });
-    await client.sendEmail({
-      From: process.env.SENDER,
-      To: email,
-      Subject: customSubject,
-      TextBody: textBody,
-      MessageStream: 'outbound',
+
+    await sendEmail({
+      email,
+      notifyAdmin: true,
+      subject: customSubject,
+      textBody,
     });
 
     res.status(200).json({
