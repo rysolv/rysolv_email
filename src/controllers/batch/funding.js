@@ -1,4 +1,4 @@
-const { client } = require('../../connect');
+const { emailClient } = require('../../connect');
 const { issueResolved } = require('../../templates/funding');
 const { usersWhoFunded } = require('../../db');
 
@@ -11,25 +11,23 @@ exports.issueResolved = async (req, res, next) => {
     const users = await usersWhoFunded({ issueId });
     const issueUrl = `https://rysolv.com/issues/detail/${issueId}`;
 
-    const emails = users.map(
-      ({ email, name, totalFunded, userContribution }) => {
-        const textBody = text({
-          issueUrl,
-          name,
-          totalFunded,
-          userContribution,
-        });
-        return {
-          From: process.env.SENDER,
-          To: email,
-          Subject: subject,
-          TextBody: textBody,
-          MessageStream: 'outbound',
-        };
-      },
-    );
+    const emails = users.map(({ email, name, totalFunded, userContribution }) => {
+      const textBody = text({
+        issueUrl,
+        name,
+        totalFunded,
+        userContribution,
+      });
+      return {
+        From: process.env.SENDER,
+        To: email,
+        Subject: subject,
+        TextBody: textBody,
+        MessageStream: 'outbound',
+      };
+    });
 
-    await client.sendEmailBatch(emails);
+    await emailClient.sendEmailBatch(emails);
 
     res.status(200).json({
       email: 'Email delivered',
