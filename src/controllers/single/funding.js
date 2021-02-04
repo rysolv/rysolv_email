@@ -1,14 +1,14 @@
 const { client } = require('../../connect');
-const { oneUser, oneIssue } = require('../../db');
-const { postFundingComment } = require('../../../github');
 const {
   earnedBounty,
   fundedAccount,
   fundedIssue,
 } = require('../../templates/funding');
+const { oneUser, oneIssue } = require('../../db');
+const { postFundingComment } = require('../../../github');
 
 exports.earnedBounty = async (req, res, next) => {
-  const { userId, fundedAmount, rep } = req.body;
+  const { fundedAmount, rep, userId } = req.body;
   const { subject, text } = earnedBounty;
 
   try {

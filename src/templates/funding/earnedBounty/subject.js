@@ -1,4 +1,3 @@
-const subject = ({ fundedAmount }) =>
-  `You just earned $${fundedAmount} on Rysolv!`;
+const subject = ({ fundedAmount }) => `You just earned $${fundedAmount} on Rysolv!`;
 
 module.exports = subject;
