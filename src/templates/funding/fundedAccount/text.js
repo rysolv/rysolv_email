@@ -1,5 +1,4 @@
-const text = ({ amount, balance }) => {
-  return `
+const text = ({ amount, balance }) => `
     Your account has been funded with $${amount}.
 
     Your total account balance is ${balance}.
@@ -13,6 +12,5 @@ const text = ({ amount, balance }) => {
     The Rysolv Team
     https://rysolv.com
   `;
-};
 
 module.exports = text;

@@ -1,5 +1,4 @@
-const text = ({ name, issueUrl, totalFunded, userContribution }) => {
-  return `    
+const text = ({ name, issueUrl, totalFunded, userContribution }) => `    
     You contributed $${userContribution} to this issue.
     
     ${name} (${issueUrl})
@@ -11,6 +10,5 @@ const text = ({ name, issueUrl, totalFunded, userContribution }) => {
     The Rysolv Team
     https://rysolv.com
   `;
-};
 
 module.exports = text;

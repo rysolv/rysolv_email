@@ -4,18 +4,14 @@ const postmark = require('postmark');
 
 const production = process.env.NODE_ENV === 'production';
 
-/* 
-	Connect to Postmark server
-*/
+/* Connect to Postmark server */
 const SECRET_KEY = production
   ? process.env.POSTMARK_KEY
   : process.env.POSTMARK_TEST_KEY;
 
 const client = new postmark.ServerClient(SECRET_KEY);
 
-/* 
-	Connect to postgress
-*/
+/* Connect to Postgres */
 const pool = new Pool({
   database: production ? process.env.DB_NAME : process.env.DB_NAME_DEV,
   host: production ? process.env.DB_HOST : process.env.DB_HOST_DEV,
