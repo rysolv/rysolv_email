@@ -1,4 +1,4 @@
-const { sendEmail } = require('../../connect');
+const { sendEmail } = require('../../sendEmail');
 const { oneUser } = require('../../db');
 const { welcome } = require('../../templates/users');
 
@@ -13,6 +13,7 @@ exports.welcome = async (req, res, next) => {
       email,
       subject,
       textBody: text,
+      userId,
     });
 
     res.status(200).json({
