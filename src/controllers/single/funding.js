@@ -9,8 +9,8 @@ exports.earnedBounty = async (req, res, next) => {
 
   try {
     const { email, username } = await oneUser({ userId });
-    const textBody = text({ fundedAmount, rep, username });
     const customSubject = subject({ fundedAmount });
+    const textBody = text({ fundedAmount, rep, username });
 
     await sendEmail({
       email,
