@@ -1,5 +1,5 @@
-const { sendEmail } = require('../../sendEmail');
 const { oneUser } = require('../../db');
+const { sendEmail } = require('../../sendEmail');
 const { welcome } = require('../../templates/users');
 
 exports.welcome = async (req, res, next) => {

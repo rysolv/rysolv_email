@@ -1,5 +1,5 @@
-const { recordNotification } = require('./db');
 const { emailClient } = require('./connect');
+const { recordNotification } = require('./db');
 
 const sendEmail = async ({ email, notifyAdmin, subject, textBody, userId }) => {
   await emailClient.sendEmail({

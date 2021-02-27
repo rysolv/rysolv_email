@@ -1,4 +1,5 @@
 const { v4: uuidv4 } = require('uuid');
+
 const { singleQuery } = require('./baseQueries');
 
 // Log email to notifications table
