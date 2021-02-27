@@ -169,7 +169,7 @@ Body: {name, email, issue}
 ### Welcome email
 
 ```
-POST: localhost:3000/s/auth/welcome
+POST: localhost:3000/s/users/welcome
 Body: {userId}
 ```
 

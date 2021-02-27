@@ -1,7 +1,7 @@
 const { earnedBounty, fundedAccount, fundedIssue } = require('../../templates/funding');
 const { oneUser, oneIssue } = require('../../db');
 const { postFundingComment } = require('../../../github');
-const { sendEmail } = require('../../connect');
+const { sendEmail } = require('../../sendEmail');
 
 exports.earnedBounty = async (req, res, next) => {
   const { fundedAmount, rep, userId } = req.body;
@@ -17,6 +17,7 @@ exports.earnedBounty = async (req, res, next) => {
       notifyAdmin: true,
       subject: customSubject,
       textBody,
+      userId,
     });
 
     res.status(200).json({
@@ -43,6 +44,7 @@ exports.fundedIssue = async (req, res, next) => {
       notifyAdmin: true,
       subject,
       textBody,
+      userId,
     });
 
     await postFundingComment({
@@ -75,6 +77,7 @@ exports.fundedAccount = async (req, res, next) => {
       notifyAdmin: true,
       subject: customSubject,
       textBody,
+      userId,
     });
 
     res.status(200).json({
