@@ -144,6 +144,17 @@ Body: {userId, fundedAmount, rep}
 
 - You have earned the bounty on an issue
 
+## `/s/hiring`
+
+### Hiring form submitted
+
+```
+POST: localhost:3000/s/hiring/signup
+Body: { userId }
+```
+
+- You have signed up for the hiring platform
+
 ## `/s/pullRequests`
 
 ### Pull request submitted
