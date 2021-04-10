@@ -175,6 +175,17 @@ Body: {userId}
 
 - Welcome to Rysolv
 
+## `/s/users`
+
+### Recommendations email
+
+```
+POST: localhost:3000/s/users/recommendations
+Body: {issueList, userId}
+```
+
+- Check out some new issues you might like
+
 <br>
 <br>
 
