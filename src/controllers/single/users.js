@@ -4,18 +4,18 @@ const { sendEmail } = require('../../sendEmail');
 
 // Notify users of recommendations
 exports.userRecommendations = async (req, res, next) => {
-  const { issueList, userId } = req.body;
+  const { topIssues, userId } = req.body;
   const { generateHtmlText, generatePlainText, generateSubject } = recommendations;
 
   try {
     const { email, firstName, username } = await oneUser({ userId });
-    const numOfIssues = issueList.length;
+    const numOfIssues = topIssues.length;
 
     await sendEmail({
       email,
-      htmlBody: generateHtmlText({ issueList, username }),
+      htmlBody: generateHtmlText({ topIssues, username }),
       subject: generateSubject({ firstName, numOfIssues }),
-      textBody: generatePlainText({ issueList, username }),
+      textBody: generatePlainText({ topIssues, username }),
       userId,
     });
 

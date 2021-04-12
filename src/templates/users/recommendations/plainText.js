@@ -1,11 +1,10 @@
-module.exports = ({ issueList, username }) => `
+module.exports = ({ topIssues, username }) => `
   Hello ${username},
 
   Check out some new issues you might like.
 
-  ${issueList.map(({ title, description, fundedAmount }) => `
-    ${title}
+  ${topIssues.map(({ fundedAmount, name }) => `
+    ${name}
     ${fundedAmount}
-    ${description}
   `)}
 `;
