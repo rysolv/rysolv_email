@@ -18,7 +18,7 @@ module.exports = ({ topIssues, username }) => `
   </head>
   <body style="color: rgba(0,0,0,0.7);font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 14px;height: 100vh; margin: 0px;">
     <div id="main-container" style="background-color: rgb(246, 248, 250);padding: 5% 10% 10%;">
-      <table id="main-table" style="background-color: white;padding: 0 50px 50px;">
+      <table id="main-table" style="background-color: white;margin: auto;padding: 0 50px 50px;">
         <tr>
           <td>
             <table id="header-table" style="width: 100%;">
@@ -64,11 +64,11 @@ module.exports = ({ topIssues, username }) => `
                     </td>
                   </tr>
                 </table>
-              </table>
-            </td>
-          </tr>
-        </table>
-      `)}
+              `).join('')}
+            </table>
+          </td>
+        </tr>
+      </table>
     </div>
   </body>
 </html>

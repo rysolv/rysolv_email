@@ -6,5 +6,5 @@ module.exports = ({ topIssues, username }) => `
   ${topIssues.map(({ fundedAmount, name }) => `
     ${name}
     ${fundedAmount}
-  `)}
+  `).join('')}
 `;
