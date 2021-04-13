@@ -1,6 +1,7 @@
 const { oneUser } = require('../../db');
 const { sendEmail } = require('../../sendEmail');
 const { signUp } = require('../../templates/hiring');
+
 exports.signUp = async (req, res, next) => {
   const { userId } = req.body;
   const { subject, text } = signUp;
