@@ -8,29 +8,6 @@ const production = process.env.NODE_ENV === 'production';
 const SECRET_KEY = production ? process.env.POSTMARK_KEY : process.env.POSTMARK_TEST_KEY;
 const emailClient = new postmark.ServerClient(SECRET_KEY);
 
-const sendEmail = async ({ email, notifyAdmin, subject, textBody }) => {
-  await emailClient.sendEmail({
-    From: process.env.SENDER,
-    To: email,
-    Subject: subject,
-    TextBody: textBody,
-    MessageStream: 'outbound',
-  });
-
-  if (notifyAdmin) {
-    const adminSubject = `[NOTIFICATION] ${subject}`;
-    const adminText = `${textBody} \n\n Sent to ${email}`;
-
-    await emailClient.sendEmail({
-      From: process.env.SENDER,
-      To: process.env.SENDER,
-      Subject: adminSubject,
-      TextBody: adminText,
-      MessageStream: 'outbound',
-    });
-  }
-};
-
 /* Connect to Postgres */
 const pool = new Pool({
   database: production ? process.env.DB_NAME : process.env.DB_NAME_DEV,
@@ -58,4 +35,4 @@ pool.on('remove', () => {
   console.log('Client connection ended');
 });
 
-module.exports = { emailClient, pool, sendEmail };
+module.exports = { emailClient, pool };

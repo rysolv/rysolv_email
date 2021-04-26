@@ -1,8 +1,11 @@
-const { oneIssue } = require('./issues');
-const { oneUser, usersWhoFunded } = require('./users');
+const funding = require('./funding');
+const issues = require('./issues');
+const notifications = require('./notifications');
+const users = require('./users');
 
 module.exports = {
-  oneIssue,
-  oneUser,
-  usersWhoFunded,
+  ...funding,
+  ...issues,
+  ...notifications,
+  ...users,
 };
