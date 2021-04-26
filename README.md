@@ -144,6 +144,15 @@ Body: {userId, fundedAmount, rep}
 
 - You have earned the bounty on an issue
 
+### Approved Bounty
+
+```
+POST: localhost:3000/s/funding/approvedBounty
+Body: {userId, fundedAmount, rep}
+```
+
+- You have earned the bounty on an issue
+
 ## `/s/pullRequests`
 
 ### Pull request submitted
