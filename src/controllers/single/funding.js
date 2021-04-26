@@ -1,16 +1,49 @@
-const { earnedBounty, fundedAccount, fundedIssue } = require('../../templates/funding');
-const { oneUser, oneIssue } = require('../../db');
+const {
+  approvedBounty,
+  earnedBounty,
+  fundedAccount,
+  fundedIssue,
+} = require('../../templates/funding');
+const { getEarnedBounty, oneIssue, oneUser } = require('../../db');
 const { postFundingComment } = require('../../../github');
 const { sendEmail } = require('../../sendEmail');
 
+exports.approvedBounty = async (req, res, next) => {
+  const { fundingId } = req.body;
+  const { subject, text } = approvedBounty;
+
+  try {
+    const { email, fundedAmount, userId, username } = await getEarnedBounty({
+      fundingId,
+    });
+    const textBody = text({ fundedAmount, username });
+
+    await sendEmail({
+      email,
+      notifyAdmin: true,
+      subject,
+      textBody,
+      userId,
+    });
+
+    res.status(200).json({
+      email: 'Email delivered',
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 exports.earnedBounty = async (req, res, next) => {
-  const { fundedAmount, rep, userId } = req.body;
+  const { fundingId } = req.body;
   const { subject, text } = earnedBounty;
 
   try {
-    const { email, username } = await oneUser({ userId });
-    const customSubject = subject({ fundedAmount });
-    const textBody = text({ fundedAmount, rep, username });
+    const { email, rep, userId, username, userPayout } = await getEarnedBounty({
+      fundingId,
+    });
+    const customSubject = subject({ userPayout });
+    const textBody = text({ rep, username, userPayout });
 
     await sendEmail({
       email,
