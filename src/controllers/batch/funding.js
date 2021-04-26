@@ -67,13 +67,13 @@ exports.repoPayout = async (req, res, next) => {
           email,
           issueName,
           issueUrl,
+          payoutDate: formattedDate,
           payoutUrl,
           repoData,
           repoName,
           repoPayoutAmount,
           repoTotal,
           userId,
-          payoutDate: formattedDate,
           username,
         });
         return {

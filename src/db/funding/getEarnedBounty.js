@@ -12,7 +12,6 @@ const getEarnedBounty = async ({ fundingId }) => {
     FROM funding f
     JOIN users u ON u.id = f.user_id
     WHERE f.id = $1
-
   `;
   const { rows } = await singleQuery({ queryText, values: [fundingId] });
   const [oneRow] = rows;

@@ -4,7 +4,7 @@ const {
   fundedAccount,
   fundedIssue,
 } = require('../../templates/funding');
-const { oneUser, oneIssue, getEarnedBounty } = require('../../db');
+const { getEarnedBounty, oneIssue, oneUser } = require('../../db');
 const { postFundingComment } = require('../../../github');
 const { sendEmail } = require('../../sendEmail');
 
@@ -13,7 +13,7 @@ exports.approvedBounty = async (req, res, next) => {
   const { subject, text } = approvedBounty;
 
   try {
-    const { email, fundedAmount, username, userId } = await getEarnedBounty({
+    const { email, fundedAmount, userId, username } = await getEarnedBounty({
       fundingId,
     });
     const textBody = text({ fundedAmount, username });

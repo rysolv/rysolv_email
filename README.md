@@ -54,7 +54,7 @@ Endpoints which only address a single user
 
 ```
 POST: localhost:3000/s/attempting/started
-Body: {name, email, issue}
+Body: { email, issue, name }
 ```
 
 - User has started attempting an issue
@@ -63,7 +63,7 @@ Body: {name, email, issue}
 
 ```
 POST: localhost:3000/s/attempting/reminder
-Body: {name, email, issue}
+Body: { email, issue, name }
 ```
 
 - Reminder to check in on issue after 30 days
@@ -74,7 +74,7 @@ Body: {name, email, issue}
 
 ```
 POST: localhost:3000/s/issues/newComment
-Body: {name, email, issue}
+Body: { email, issue, name }
 ```
 
 - Notify the user of new comments on an issue they posted
@@ -83,7 +83,7 @@ Body: {name, email, issue}
 
 ```
 POST: localhost:3000/s/issues/newPullRequest
-Body: {name, email, issue}
+Body: { email, issue, name } 
 ```
 
 - A new pull request has been submitted for your issue
@@ -92,7 +92,7 @@ Body: {name, email, issue}
 
 ```
 POST: localhost:3000/s/issues/attempting
-Body: {name, email, issue}
+Body: { email, issue, name }
 ```
 
 - A user has marked your issue as Attempting
@@ -101,7 +101,7 @@ Body: {name, email, issue}
 
 ```
 POST: localhost:3000/s/issues/resolved
-Body: {name, email, issue}
+Body: { email, issue, name }
 ```
 
 - Your issue has been resolved
@@ -110,7 +110,7 @@ Body: {name, email, issue}
 
 ```
 POST: localhost:3000/s/issues/closed
-Body: {name, email, issue}
+Body: { email, issue, name }
 ```
 
 - Your issue has been closed
@@ -130,7 +130,7 @@ Body: { amount, userId }
 
 ```
 POST: localhost:3000/s/funding/fundedIssue
-Body: {name, email, issue}
+Body: { email, issue, name }
 ```
 
 - You funded an issue
@@ -139,7 +139,7 @@ Body: {name, email, issue}
 
 ```
 POST: localhost:3000/s/funding/earnedBounty
-Body: {userId, fundedAmount, rep}
+Body: { fundedAmount, rep, userId }
 ```
 
 - You have earned the bounty on an issue
@@ -148,7 +148,7 @@ Body: {userId, fundedAmount, rep}
 
 ```
 POST: localhost:3000/s/funding/approvedBounty
-Body: {userId, fundedAmount, rep}
+Body: { fundedAmount, rep, userId }
 ```
 
 - You have earned the bounty on an issue
@@ -179,7 +179,7 @@ Body: { userId, pullrequestId }
 
 ```
 POST: localhost:3000/s/pullRequests/merged
-Body: {name, email, issue}
+Body: { email, issue, name }
 ```
 
 - Your pull request has been merged in
@@ -190,7 +190,7 @@ Body: {name, email, issue}
 
 ```
 POST: localhost:3000/s/users/welcome
-Body: {userId}
+Body: { userId }
 ```
 
 - Welcome to Rysolv
@@ -201,7 +201,7 @@ Body: {userId}
 
 ```
 POST: localhost:3000/s/users/recommendations
-Body: {issueList, userId}
+Body: { issueList, userId }
 ```
 
 - Check out some new issues you might like
@@ -217,7 +217,7 @@ Body: {issueList, userId}
 
 ```
 POST: localhost:3000/b/attempting/pullRequest
-Body: {issueId}
+Body: { issueId }
 ```
 
 - A new pull request has been submitted
@@ -226,7 +226,7 @@ Body: {issueId}
 
 ```
 POST: localhost:3000/b/attempting/closed
-Body: {issueId}
+Body: { issueId }
 ```
 
 - Issue has been closed
@@ -235,7 +235,7 @@ Body: {issueId}
 
 ```
 POST: localhost:3000/b/attempting/resolved
-Body: {issueId}
+Body: { issueId }
 ```
 
 - The issue you were attempting has been resolved (name winner)
@@ -248,7 +248,7 @@ Body: {issueId}
 
 ```
 POST: localhost:3000/b/funding/issueResolved
-Body: {issueId}
+Body: { issueId }
 ```
 
 - And issue you funded has been resolved
@@ -257,7 +257,7 @@ Body: {issueId}
 
 ```
 POST: localhost:3000/b/funding/refunded
-Body: {issueId}
+Body: { issueId }
 ```
 
 - A contribution has been refunded to your account
@@ -268,7 +268,7 @@ Body: {issueId}
 
 ```
 POST: localhost:3000/b/pullRequests/newPullRequest
-Body: {issueId}
+Body: { issueId }
 ```
 
 - A new pull request has been submitted
@@ -277,7 +277,7 @@ Body: {issueId}
 
 ```
 POST: localhost:3000/b/pullRequests/merged
-Body: {issueId}
+Body: { issueId }
 ```
 
 - A pull request has been merged in
@@ -286,7 +286,7 @@ Body: {issueId}
 
 ```
 POST: localhost:3000/b/pullRequests/funded
-Body: {issueId}
+Body: { issueId }
 ```
 
 - Increased bounty on issue
@@ -295,7 +295,7 @@ Body: {issueId}
 
 ```
 POST: localhost:3000/b/pullRequests/closed
-Body: {issueId}
+Body: { issueId }
 ```
 
 - An issue you submitted a PR on has been closed
@@ -304,7 +304,7 @@ Body: {issueId}
 
 ```
 POST: localhost:3000/b/pullRequests/resolved
-Body: {issueId}
+Body: { issueId }
 ```
 
 - An issue you submitted a PR on has been resolved
@@ -315,7 +315,7 @@ Body: {issueId}
 
 ```
 POST: localhost:3000/b/watching/newPullRequest
-Body: {issueId}
+Body: { issueId }
 ```
 
 - A new pull request has been submitted
@@ -324,7 +324,7 @@ Body: {issueId}
 
 ```
 POST: localhost:3000/b/watching/funded
-Body: {issueId}
+Body: { issueId }
 ```
 
 - New funding
@@ -333,7 +333,7 @@ Body: {issueId}
 
 ```
 POST: localhost:3000/b/watching/resolved
-Body: {issueId}
+Body: { issueId }
 ```
 
 - Issue has been resolved
