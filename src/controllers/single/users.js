@@ -8,13 +8,13 @@ exports.userRecommendations = async (req, res, next) => {
   const { generateHtmlText, generatePlainText, generateSubject } = recommendations;
 
   try {
-    const { email, firstName, username } = await oneUser({ userId });
+    const { email, username } = await oneUser({ userId });
     const numOfIssues = topIssues.length;
 
     await sendEmail({
       email,
       htmlBody: generateHtmlText({ topIssues, username }),
-      subject: generateSubject({ firstName, numOfIssues }),
+      subject: generateSubject({ numOfIssues, username }),
       textBody: generatePlainText({ topIssues, username }),
       userId,
     });

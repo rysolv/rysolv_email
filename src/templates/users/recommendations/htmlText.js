@@ -1,3 +1,5 @@
+const { formatDollar } = require('../../../helpers');
+
 module.exports = ({ topIssues, username }) => `
 <!DOCTYPE html>
   <html lang="en">
@@ -52,7 +54,7 @@ module.exports = ({ topIssues, username }) => `
                     </tr>
                     <tr class="amount-container" style="margin: auto;margin-left: 20px;">
                       <td class="amount-wrapper" style="background: rgb(229, 251, 242);display: inline;padding: 3px 10px; white-space: nowrap !important;">
-                        <span class="amount" style="color: #08b26e;font-weight: bold;">$${fundedAmount}</span>
+                        <span class="amount" style="color: #08b26e;font-weight: bold;">$${formatDollar(fundedAmount)}</span>
                       </td>
                     </tr>
                   </tbody>
