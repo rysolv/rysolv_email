@@ -1,10 +1,11 @@
 const { emailClient } = require('./connect');
 const { recordNotification } = require('./db');
 
-const sendEmail = async ({ email, notifyAdmin, subject, textBody, userId }) => {
+const sendEmail = async ({ email, htmlBody, notifyAdmin, subject, textBody, userId }) => {
   await emailClient.sendEmail({
     From: process.env.SENDER,
     To: email,
+    HtmlBody: htmlBody,
     Subject: subject,
     TextBody: textBody,
     MessageStream: 'outbound',
