@@ -6,6 +6,7 @@ const { sendEmail } = require('../../sendEmail');
 exports.userRecommendations = async (req, res, next) => {
   const { topIssues, userId } = req.body;
   const { generateHtmlText, generatePlainText, generateSubject } = recommendations;
+  console.log(`Sending ${topIssues.length} recommendations.`);
 
   try {
     const { email, username } = await oneUser({ userId });
