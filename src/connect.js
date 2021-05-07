@@ -16,8 +16,8 @@ const pool = new Pool({
   port: production ? process.env.DB_PORT : process.env.DB_PORT_DEV,
   user: production ? process.env.DB_USER : process.env.DB_USER_DEV,
   idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 2000,
-  max: 20,
+  connectionTimeoutMillis: 10000,
+  max: 40,
 });
 
 console.log('Connected to DB:', pool.options.database);
