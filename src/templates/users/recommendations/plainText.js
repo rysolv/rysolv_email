@@ -3,8 +3,9 @@ module.exports = ({ topIssues, username }) => `
 
   Check out some new issues you might like.
 
-  ${topIssues.map(({ fundedAmount, name }) => `
+  ${topIssues.map(({ fundedAmount, id, name }) => `
     ${name}
-    ${fundedAmount}
+    $${fundedAmount}
+    https://rysolv.com/issues/detail/${id}
   `).join('')}
 `;
