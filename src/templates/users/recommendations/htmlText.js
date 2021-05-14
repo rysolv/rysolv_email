@@ -18,7 +18,7 @@ module.exports = ({ topIssues, username }) => `
       }
     </style>
   </head>
-  <body style="color: rgba(0,0,0,0.7);font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 14px;height: 100vh; margin: 0px;">
+  <body style="color: rgba(0,0,0,0.7);font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 14px;height: 100%; margin: 0px;">
     <div id="main-container" style="background-color: rgb(246, 248, 250);padding: 5% 10% 10%;">
       <table id="main-table" style="background-color: white;margin: auto;padding: 0 50px 50px;">
         <tr>
