@@ -4,12 +4,12 @@ const { sendEmail } = require('../../sendEmail');
 
 // Notify user to sign into account to claim bounty
 exports.claimBounty = async (req, res, next) => {
-  const { fundedAmount, userId } = req.body;
+  const { fundedAmount, githubUrl, issueId, userId } = req.body;
   const { subject, text } = claimBounty;
 
   try {
     const { email } = await oneUser({ userId });
-    const textBody = text({ fundedAmount });
+    const textBody = text({ fundedAmount, githubUrl, issueId });
 
     await sendEmail({
       email,
