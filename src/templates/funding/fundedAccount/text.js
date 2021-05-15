@@ -1,7 +1,9 @@
-const text = ({ amount, balance }) => `
-    Your account has been funded with $${amount}.
+const { formatDollar } = require('../../../helpers');
 
-    Your total account balance is ${balance}.
+const text = ({ amount, balance }) => `
+    Your account has been funded with $${formatDollar(amount)}.
+
+    Your total account balance is $${formatDollar(balance)}.
 
     These funds can be contributed to any issue on Rysolv. 
 
