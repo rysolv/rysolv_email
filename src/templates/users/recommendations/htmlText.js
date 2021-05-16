@@ -72,6 +72,7 @@ module.exports = ({ topIssues, username }) => `
         </tr>
       </table>
     </div>
+    {{{ pm:unsubscribe }}}
   </body>
 </html>
 `;
