@@ -8,4 +8,11 @@ module.exports = ({ topIssues, username }) => `
     $${fundedAmount}
     https://rysolv.com/issues/detail/${id}
   `).join('')}
+
+
+  The Rysolv Team
+  https://rysolv.com
+
+  Unsubscribe: 
+  {{{ pm:unsubscribe }}}
 `;
