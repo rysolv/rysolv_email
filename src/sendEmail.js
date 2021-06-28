@@ -26,7 +26,7 @@ const sendEmail = async ({ email, htmlBody, notifyAdmin, subject, textBody, user
   }
 
   // Log email to notifications table (async)
-  recordNotification({ body: textBody, email, subject, userId });
+  if (userId) recordNotification({ body: textBody, email, subject, userId });
 };
 
 module.exports = { sendEmail };
