@@ -15,6 +15,7 @@ const batchFunding = require('./src/routes/batch/funding');
 // const batchWatching = require('./src/routes/batch/watching');
 
 // Single emails
+const singleContact = require('./src/routes/single/contact');
 const singleFunding = require('./src/routes/single/funding');
 const singleHiring = require('./src/routes/single/hiring');
 const singleUser = require('./src/routes/single/users');
@@ -35,6 +36,7 @@ app.use('/b/funding', batchFunding);
 // app.use('/b/watching', batchWatching);
 
 // Single routes
+app.use('/s/contact', singleContact);
 app.use('/s/funding', singleFunding);
 app.use('/s/hiring', singleHiring);
 app.use('/s/users', singleUser);
