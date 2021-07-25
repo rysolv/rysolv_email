@@ -28,20 +28,20 @@ exports.contact = async (req, res, next) => {
 
 exports.recruitingSignup = async (req, res, next) => {
   const { companyName, companyUrl, contactName, email } = req.body;
-  const { html, subject, text } = recruitingSignup;
 
   try {
-    // Send success email
+    // Send company email
+    const { html, subject, text } = recruitingSignup;
     await sendEmail({
       email,
       htmlBody: html,
       subject,
       textBody: text,
     });
-    const { subject: adminSubject, text: adminText } = recruitingAdmin;
-    const adminTextBody = adminText({ companyName, companyUrl, contactName, email });
 
     // Send admin email
+    const { subject: adminSubject, text: adminText } = recruitingAdmin;
+    const adminTextBody = adminText({ companyName, companyUrl, contactName, email });
     await sendEmail({
       email: process.env.SENDER,
       subject: adminSubject,

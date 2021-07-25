@@ -1,3 +1,3 @@
-const subject = 'Welcome to the beta!';
+const subject = 'Welcome to Rysolv!';
 
 module.exports = subject;

@@ -6,11 +6,11 @@ const text = `
 
   Want to learn more about Rysolv?
 
-  Learn how we match candidates (https://rysolv.com/how-we-find-candidates)
-  Or meet with a team member (https://calendly.com/tylermaran/30min)
+  Learn how we match candidates (https://rysolv.com/how-we-find-candidates),
+  or meet with a team member (https://calendly.com/tylermaran/30min)
 
   Not hiring right now?
-  No problem! Since you've joined the beta you're locked in to the 5% placement rate.
+  No problem! Since you've joined the beta, you're locked in to the 5% placement rate.
 `;
 
 module.exports = text;
