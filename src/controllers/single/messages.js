@@ -16,6 +16,7 @@ exports.newMessage = async (req, res, next) => {
       body,
       companyName,
       createdDate: new Date(createdDate).toLocaleDateString('en-US'),
+      fromUser,
       positionTitle,
       threadId,
     });
