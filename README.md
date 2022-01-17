@@ -68,6 +68,17 @@ Body: { email, issue, name }
 
 - Reminder to check in on issue after 30 days
 
+## `/s/company`
+
+### Welcome
+
+```
+POST: localhost:3000/s/company/welcome
+Body: { email, issue, name }
+```
+
+- Notify the user of new comments on an issue they posted
+
 ## `/s/issues`
 
 ### New Comments
@@ -83,7 +94,7 @@ Body: { email, issue, name }
 
 ```
 POST: localhost:3000/s/issues/newPullRequest
-Body: { email, issue, name } 
+Body: { email, issue, name }
 ```
 
 - A new pull request has been submitted for your issue

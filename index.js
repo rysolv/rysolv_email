@@ -15,9 +15,11 @@ const batchFunding = require('./src/routes/batch/funding');
 // const batchWatching = require('./src/routes/batch/watching');
 
 // Single emails
+const singleCompany = require('./src/routes/single/company');
 const singleContact = require('./src/routes/single/contact');
 const singleFunding = require('./src/routes/single/funding');
 const singleHiring = require('./src/routes/single/hiring');
+const singleMessage = require('./src/routes/single/messages');
 const singleUser = require('./src/routes/single/users');
 const singleWithdrawal = require('./src/routes/single/withdrawal');
 // const singleAttempting = require('./src/routes/single/attempting');
@@ -36,9 +38,11 @@ app.use('/b/funding', batchFunding);
 // app.use('/b/watching', batchWatching);
 
 // Single routes
+app.use('/s/company', singleCompany);
 app.use('/s/contact', singleContact);
 app.use('/s/funding', singleFunding);
 app.use('/s/hiring', singleHiring);
+app.use('/s/messages', singleMessage);
 app.use('/s/users', singleUser);
 app.use('/s/withdrawal', singleWithdrawal);
 // app.use('/s/attempting', singleAttempting);
