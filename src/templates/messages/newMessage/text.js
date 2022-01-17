@@ -1,7 +1,5 @@
 const text = ({ body, companyName, createdDate, fromUser, positionTitle, threadId }) => `
-You have a new message from ${fromUser} on Rysolv.
-
-${positionTitle} at ${companyName}:
+You have a new message from ${fromUser} for a ${positionTitle} position at ${companyName}.
 
 ${body}
 
