@@ -31,7 +31,7 @@ exports.newMessage = async (req, res, next) => {
 
     await sendEmail({
       email,
-      html: htmlBody,
+      htmlBody,
       notifyAdmin: true,
       subject: customSubject,
       textBody,
