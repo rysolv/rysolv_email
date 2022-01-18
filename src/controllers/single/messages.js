@@ -4,7 +4,7 @@ const { sendEmail } = require('../../sendEmail');
 
 exports.newMessage = async (req, res, next) => {
   const { userId } = req.body;
-  const { subject, text } = newMessage;
+  const { html, subject, text } = newMessage;
 
   try {
     const { body, companyName, createdDate, email, fromUser, positionTitle, threadId } = await getMessages({
@@ -20,8 +20,17 @@ exports.newMessage = async (req, res, next) => {
       threadId,
     });
 
+    const htmlBody = html({
+      body,
+      companyName,
+      createdDate: new Date(createdDate).toLocaleDateString('en-US'),
+      positionTitle,
+      threadId,
+    });
+
     await sendEmail({
       email,
+      html: htmlBody,
       notifyAdmin: true,
       subject: customSubject,
       textBody,
