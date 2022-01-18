@@ -3,13 +3,14 @@ const { singleQuery } = require('../baseQueries');
 // Get unread user messages
 const getMessages = async ({ userId }) => {
   const queryText = `
-    SELECT DISTINCT ON (m.id)
+    SELECT DISTINCT
       c.company_name AS "companyName",
+      from_user.first_name AS "fromUser",
       m.body,
       m.created_date AS "createdDate",
+      m.position_id AS "positionId",
       m.thread_id AS "threadId",
       to_user.email,
-      from_user.first_name AS "fromUser",
       uqr.value AS "positionTitle"
     FROM messages m
     JOIN company_positions cp ON cp.id = m.position_id
@@ -20,6 +21,8 @@ const getMessages = async ({ userId }) => {
     JOIN questions q ON q.id = uqr.question_id AND q.question_key = 'title'
     WHERE m.to_user_id = $1
     AND m.read_date IS NULL
+    ORDER BY m.created_date DESC
+    LIMIT 1
   `;
   const { rows } = await singleQuery({ queryText, values: [userId] });
   const [oneRow] = rows;
@@ -27,5 +30,3 @@ const getMessages = async ({ userId }) => {
 };
 
 module.exports = getMessages;
-
-// get user email too

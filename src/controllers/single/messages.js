@@ -7,7 +7,16 @@ exports.newMessage = async (req, res, next) => {
   const { html, subject, text } = newMessage;
 
   try {
-    const { body, companyName, createdDate, email, fromUser, positionTitle, threadId } = await getMessages({
+    const {
+      body,
+      companyName,
+      createdDate,
+      email,
+      fromUser,
+      positionId,
+      positionTitle,
+      threadId,
+    } = await getMessages({
       userId,
     });
 
@@ -25,6 +34,8 @@ exports.newMessage = async (req, res, next) => {
       body,
       companyName,
       createdDate: new Date(createdDate).toLocaleDateString('en-US'),
+      fromUser,
+      positionId,
       positionTitle,
       threadId,
     });

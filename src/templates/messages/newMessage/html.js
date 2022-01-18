@@ -1,4 +1,12 @@
-const html = ({ body, companyName, createdDate, fromUser, positionTitle, threadId }) => `
+const html = ({
+  body,
+  companyName,
+  createdDate,
+  fromUser,
+  positionId,
+  positionTitle,
+  threadId,
+}) => `
   <!DOCTYPE html>
   <html lang="en">
 
@@ -27,13 +35,13 @@ const html = ({ body, companyName, createdDate, fromUser, positionTitle, threadI
         style="height: auto;margin: -20px auto;width: 100px;">
 
       <h1 style="color: #163486;">New message from ${fromUser}!</h1>
-      <p><a href='https://calendly.com/tylermaran/30min'>${positionTitle}</a> at ${companyName}</p>
+      <p>Looking for a <a href='https://rysolv.com/positions/?id=${positionId}'>${positionTitle}</a> at ${companyName}</p>
 
       <div id='message-container' style="width: 40%; margin: 0 auto; text-align: left;">
         <div style="border-radius: 10px; padding: 10px 20px; background-color: #f1f1f1;">
           ${body}
         </div>
-        <div style="text-align: right;">Sent ${createdDate}}</div>
+        <div style="text-align: right;">Sent ${createdDate}</div>
       </div>
 
       <br>

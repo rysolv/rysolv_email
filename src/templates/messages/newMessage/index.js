@@ -1,4 +1,5 @@
 const subject = require('./subject');
 const text = require('./text');
+const html = require('./html');
 
-module.exports = { subject, text };
+module.exports = { html, subject, text };
