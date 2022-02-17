@@ -57,14 +57,17 @@ exports.welcome = async (req, res, next) => {
   const { subject, text } = welcome;
 
   try {
-    const { email } = await oneUser({ userId });
+    const { companyId, email } = await oneUser({ userId });
 
-    await sendEmail({
-      email,
-      subject,
-      textBody: text,
-      userId,
-    });
+    // Don't send the standard welcome email to companies
+    if (!companyId) {
+      await sendEmail({
+        email,
+        subject,
+        textBody: text,
+        userId,
+      });
+    }
 
     res.status(200).json({
       email: 'Email delivered',

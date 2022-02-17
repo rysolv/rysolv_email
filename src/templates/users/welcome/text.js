@@ -1,13 +1,15 @@
 const text = `
-  Welcome to Rysolv!
+Welcome to Rysolv!
 
-  Open source needs you now more than ever before. And we want you to get paid for it too.
-  
-  So take a look around, find something to work on and fund what you believe in.
+Head to your Dashboard any time to find recommended jobs, or Open Source projects looking for contributors.
+https://rysolv.com/dashboard
 
-  Questions? Head over to our How To page (https://rysolv.com/how-to) or reach out to support@rysolv.com.
-  
-  The Rysolv Team
-  https://rysolv.com
+
+If you have any questions, feel free to reach out to a team member at support@rysolv.com
+
+Thanks for contributing,
+
+The Rysolv Team
+https://rysolv.com
 `;
 module.exports = text;
